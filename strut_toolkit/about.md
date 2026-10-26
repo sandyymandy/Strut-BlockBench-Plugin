@@ -19,17 +19,17 @@ Must be paired with a Minecraft: Java mod that uses the Strut library.
 <div style="text-align:center;"><h2>Links:</h2></div>
 <div style="text-align:center; display:flex">
 <div style="flex:1">
-<a href="https://github.com/sandyymandy/Strut-Claude">
+<a href="https://github.com/sandyymandy/Strut">
 <p style="font-size:1.25em; color:#AAAAAA">Repository</p>
 </a>
 </div>
 <div style="flex:1">
-<a href="https://github.com/sandyymandy/Strut-Claude/tree/master/doc">
+<a href="https://github.com/sandyymandy/Strut/tree/master/doc">
 <p style="font-size:1.25em; color:#AAAAAA">Documentation</p>
 </a>
 </div>
 <div style="flex:1">
-<a href="https://github.com/sandyymandy/Strut-Claude/issues">
+<a href="https://github.com/sandyymandy/Strut/issues">
 <p style="font-size:1.25em; color:#AAAAAA">Issues</p>
 </a>
 </div>
