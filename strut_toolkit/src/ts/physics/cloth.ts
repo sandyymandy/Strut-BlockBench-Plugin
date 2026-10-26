@@ -143,7 +143,7 @@ export class Topology {
     readonly adjOther: number[] = [];
     readonly adjRest: number[] = [];
     restVolume = 0;
-    /** The connected pieces of the mesh (two breasts merged into one mesh are two): each one's particles, triangles and rest volume; volume is kept piece by piece */
+    /** The connected pieces of the mesh (two pouches merged into one mesh are two): each one's particles, triangles and rest volume; volume is kept piece by piece */
     readonly pieceParticles: number[][] = [];
     readonly pieceTriangles: number[][] = [];
     readonly pieceVolume: number[] = [];
@@ -643,7 +643,7 @@ function inverseTranspose(m: M3): M3 | null {
 
 /**
  * The rigid motion that best takes the points {@code from} to the points {@code to}: their two centres and the rotation (the polar factor of their spread,
- * found by averaging the matrix with its inverse transpose until it settles). What a carried mesh (a nipple on a breast) moves by, as one piece
+ * found by averaging the matrix with its inverse transpose until it settles). What a carried mesh (a tip on a pouch) moves by, as one piece
  */
 export function rigidFit(from: readonly V3[], to: readonly V3[]): { centreFrom: V3; centreTo: V3; rotation: M3 } {
     const m = from.length;

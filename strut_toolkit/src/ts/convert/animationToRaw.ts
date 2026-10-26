@@ -212,7 +212,7 @@ function convertChannel(bone: string, property: PropertyName, data: unknown, str
 
 /**
  * A channel is constant when it is a bare vector or number, or an object carrying {@code vector} and no time keys. That last form is
- * what PH's files use: {@code "position": {"vector": [0, 0, 0]}}
+ * what older files use: {@code "position": {"vector": [0, 0, 0]}}
  */
 function isConstant(data: unknown): boolean {
     if (Array.isArray(data) || typeof data === 'number' || typeof data === 'string')

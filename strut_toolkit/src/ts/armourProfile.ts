@@ -78,8 +78,8 @@ export function buildWearerProfile(setId: string, groups: MarkedGroup[]): string
 }
 
 /**
- * The model name of a slot's file for a set: {@code mymod:girl} and {@code head} make {@code girl_head}, the file {@code strut/models/armour/girl_head.strutmodel} the
- * set lists as {@code mymod:armour/girl_head}
+ * The model name of a slot's file for a set: {@code mymod:creature} and {@code head} make {@code creature_head}, the file {@code strut/models/armour/creature_head.strutmodel} the
+ * set lists as {@code mymod:armour/creature_head}
  */
 export function slotModelName(setId: string, slot: string): string {
     const path = setId.includes(':') ? setId.substring(setId.indexOf(':') + 1) : setId;

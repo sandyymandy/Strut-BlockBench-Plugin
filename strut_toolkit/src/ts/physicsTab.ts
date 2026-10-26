@@ -1252,10 +1252,10 @@ const TEMPLATE = `
     <div v-else>
       <div class="strut-phys-seg">
         <button :class="{ on: ui.kind === 'none' }" @click="kind('none')" title="This bone just follows the animation">None</button>
-        <button :class="{ on: ui.kind === 'spring' }" @click="kind('spring')" title="One bone that jiggles: breasts, cheeks, belly">Spring</button>
+        <button :class="{ on: ui.kind === 'spring' }" @click="kind('spring')" title="One bone that jiggles: pouches, jowls, belly">Spring</button>
         <button :class="{ on: ui.kind === 'chain' }" @click="kind('chain')" title="This bone and the bones under it swing like rope: hair, tails, ears">Chain</button>
         <button v-if="ui.hasMesh || ui.kind === 'cloth'" :class="{ on: ui.kind === 'cloth' }" @click="kind('cloth')" title="The vertices of this bone mesh hang and swing like cloth: a skirt, a cape">Cloth</button>
-        <button v-if="ui.hasMesh || ui.kind === 'flesh'" :class="{ on: ui.kind === 'flesh' }" @click="kind('flesh')" title="The vertices of this bone mesh are soft: pulled back to shape, bulging when pressed. Breasts, belly">Flesh</button>
+        <button v-if="ui.hasMesh || ui.kind === 'flesh'" :class="{ on: ui.kind === 'flesh' }" @click="kind('flesh')" title="The vertices of this bone mesh are soft: pulled back to shape, bulging when pressed. Pouches, belly">Flesh</button>
       </div>
       <div v-if="ui.kind === 'spring' || ui.kind === 'chain'">
         <div class="strut-phys-chips"><button class="strut-phys-chip" v-for="l in looksFor" :key="l.id" @click="look(l.id)">{{ l.label }}</button></div>
@@ -1327,7 +1327,7 @@ const TEMPLATE = `
         </div>
         <div class="strut-phys-sub" @click="tog('carry')">{{ ui.sections.carry ? '▾' : '▸' }} Meshes that ride on it</div>
         <div v-if="ui.sections.carry">
-          <div class="strut-phys-hint">Other bones whose meshes move with this one as a rigid piece: a nipple on a breast. They are drawn with it in the preview and in the game.</div>
+          <div class="strut-phys-hint">Other bones whose meshes move with this one as a rigid piece: a tip on a pouch. They are drawn with it in the preview and in the game.</div>
           <div class="strut-phys-bonelist">
             <label v-for="b in ui.meshBones" :key="b"><input type="checkbox" :checked="ui.soft.carry.includes(b)" @change="carryOn(b, $event)"> {{ b }}</label>
           </div>

@@ -317,7 +317,7 @@ export interface SoftControls {
     collideBody: boolean;
     collideWorld: boolean;
     collideOthers: boolean;
-    /** Other bones whose meshes ride on this one (a nipple on a breast) */
+    /** Other bones whose meshes ride on this one (a tip on a pouch) */
     carry: string[];
 }
 

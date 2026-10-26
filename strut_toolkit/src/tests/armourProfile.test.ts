@@ -6,9 +6,9 @@ const groups: MarkedGroup[] = [
     { name: 'armorHelmet', slot: 'head', covers: '' },
     { name: 'armorChest', slot: 'chest', covers: '' },
     { name: 'armorShoulderL', slot: 'chest', covers: '' },
-    { name: 'boobL', slot: '', covers: 'chest' },
-    { name: 'boobR', slot: '', covers: 'chest' },
-    { name: 'vagina', slot: '', covers: 'legs' },
+    { name: 'pouchL', slot: '', covers: 'chest' },
+    { name: 'pouchR', slot: '', covers: 'chest' },
+    { name: 'belly', slot: '', covers: 'legs' },
     { name: 'armorPantsUpL', slot: 'legs', covers: '' },
     { name: 'eyes', slot: '', covers: '' },
 ];
@@ -24,7 +24,7 @@ describe('armour marks', () => {
     });
 
     test('what a slot covers is gathered by slot', () => {
-        expect(coversBySlot(groups)).toEqual({ chest: ['boobL', 'boobR'], legs: ['vagina'] });
+        expect(coversBySlot(groups)).toEqual({ chest: ['pouchL', 'pouchR'], legs: ['belly'] });
     });
 
     test('only the game\'s slots are slots', () => {
@@ -36,9 +36,9 @@ describe('armour marks', () => {
 
 describe('wearer profile', () => {
     test('names the set and what each slot hides', () => {
-        expect(JSON.parse(buildWearerProfile('mymod:girl', groups))).toEqual({
-            armour_set: 'mymod:girl',
-            slots: { chest: { covers: ['boobL', 'boobR'] }, legs: { covers: ['vagina'] } },
+        expect(JSON.parse(buildWearerProfile('mymod:creature', groups))).toEqual({
+            armour_set: 'mymod:creature',
+            slots: { chest: { covers: ['pouchL', 'pouchR'] }, legs: { covers: ['belly'] } },
         });
     });
 
@@ -47,18 +47,18 @@ describe('wearer profile', () => {
     });
 
     test('a project with no covers has no slots', () => {
-        expect(JSON.parse(buildWearerProfile('mymod:girl', [{ name: 'a', slot: 'head', covers: '' }]))).toEqual({ armour_set: 'mymod:girl' });
+        expect(JSON.parse(buildWearerProfile('mymod:creature', [{ name: 'a', slot: 'head', covers: '' }]))).toEqual({ armour_set: 'mymod:creature' });
     });
 });
 
 describe('slot file names', () => {
     test('a model name for a slot comes from the set', () => {
-        expect(slotModelName('mymod:girl', 'head')).toBe('girl_head');
+        expect(slotModelName('mymod:creature', 'head')).toBe('creature_head');
         expect(slotModelName('mymod:races/elf', 'feet')).toBe('elf_feet');
-        expect(slotModelName('girl', 'legs')).toBe('girl_legs');
+        expect(slotModelName('creature', 'legs')).toBe('creature_legs');
     });
 
     test('the set file lists the models by id', () => {
-        expect(setFileSlots('mymod:girl', ['head', 'chest'])).toEqual({ head: 'mymod:armour/girl_head', chest: 'mymod:armour/girl_chest' });
+        expect(setFileSlots('mymod:creature', ['head', 'chest'])).toEqual({ head: 'mymod:armour/creature_head', chest: 'mymod:armour/creature_chest' });
     });
 });

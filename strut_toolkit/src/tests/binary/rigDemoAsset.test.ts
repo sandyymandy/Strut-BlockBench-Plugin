@@ -15,11 +15,9 @@ import { skeletonFingerprint } from '../../ts/binary/fingerprint';
  * proves `decodeModel` correctly reads a real production file an independent implementation
  * (Python) wrote, one dependency this stage's own writer path shares with every other reader
  * <p>
- * Read directly from the Java resources tree rather than a copy, so regenerating the demo asset
- * (`tools/make_rig_demo.py`) is automatically picked up here too - one committed asset, two
- * independent readers, no duplication to go stale
+ * A copy of the engine's own asset, kept in tests/fixtures: copy it again when the demo asset is regenerated
  */
-const RIG_DEMO_PATH = path.resolve(__dirname, '../../../../../src/main/resources/assets/strut/strut/models/entity/rig_demo.strutmodel');
+const RIG_DEMO_PATH = path.resolve(__dirname, '../fixtures/rig_demo.strutmodel');
 
 describe('decodeModel against the real rig_demo.strutmodel asset', () => {
   it('reads the asset written by tools/make_rig_demo.py, matching what SkinningTest asserts on the Java side', () => {

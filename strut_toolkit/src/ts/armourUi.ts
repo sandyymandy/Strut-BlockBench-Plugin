@@ -42,7 +42,7 @@ export function createArmourProperties(): Property[] {
                 exposed: false,
                 values: [],
             }) as Property,
-            property => { (property as any).description = 'The armour set this model wears, mymod:girl (a file assets/<ns>/strut/armour/sets/<path>.json)'; }
+            property => { (property as any).description = 'The armour set this model wears, mymod:creature (a file assets/<ns>/strut/armour/sets/<path>.json)'; }
         ),
     ];
 }
@@ -66,7 +66,7 @@ function withArmourSet(then: (setId: string) => void): void {
         return;
     }
 
-    (Blockbench as any).textPrompt('Armour set this model wears (mymod:girl)', 'mymod:girl', (text: string) => {
+    (Blockbench as any).textPrompt('Armour set this model wears (mymod:creature)', 'mymod:creature', (text: string) => {
         (Project as any)[PROPERTY_ARMOUR_SET] = text.trim();
         Project.saved = false;
         then(text.trim());
@@ -120,7 +120,7 @@ export function exportSelectedSlot(): void {
         form: {
             info: { type: 'info', text: `Exports the ${names.length} selected bone${names.length === 1 ? '' : 's'} (${listed}) and what is on them. To export other bones, cancel, select them in the outliner and export again.` },
             slot: { label: 'Slot', type: 'select', options: SLOT_CHOICES, value: 'head', description: 'The equipment slot this piece is worn in' },
-            set: { label: 'Armour set', type: 'text', value: known !== '' ? known : 'mymod:girl', description: 'The armour set this model belongs to, namespace:name (a file assets/<namespace>/strut/armour/sets/<name>.json)' },
+            set: { label: 'Armour set', type: 'text', value: known !== '' ? known : 'mymod:creature', description: 'The armour set this model belongs to, namespace:name (a file assets/<namespace>/strut/armour/sets/<name>.json)' },
         },
         onConfirm(form: any) {
             const slot = String(form.slot);

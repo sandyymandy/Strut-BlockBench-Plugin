@@ -107,7 +107,7 @@ interface SpringPart {
     pull: V3 | null;
 }
 
-/** A mesh that rides on a cloth or flesh as one rigid piece (a nipple on a breast) */
+/** A mesh that rides on a cloth or flesh as one rigid piece (a tip on a pouch) */
 interface CarriedPart {
     readonly input: ClothMeshInput;
     /** The particles whose movement it follows */

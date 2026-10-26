@@ -86,14 +86,14 @@ describe('convertAnimationFile', () => {
 
     it('an easing name used as a vector value is written as 0 and reported (the doggy scene data)', () => {
         const { animation, findings } = convert({
-            a: { bones: { boobR: { position: { vector: ['easeInOutSine', 'easeInOutSine', 'easeInOutSine'] } } } },
+            a: { bones: { pouchR: { position: { vector: ['easeInOutSine', 'easeInOutSine', 'easeInOutSine'] } } } },
         });
         const value = animation.clips[0].channels[0].keys[0].value;
 
         expect(value.literals).toEqual([0, 0, 0]);
         expect(value.expressions).toEqual([null, null, null]);
         expect(findings.lossy).toBe(3);
-        expect(findings.items[0].bone).toBe('boobR');
+        expect(findings.items[0].bone).toBe('pouchR');
         expect(findings.items[0].clip).toBe('a');
     });
 
@@ -175,13 +175,13 @@ describe('convertAnimationFile', () => {
             a: {
                 sound_effects: { '2.0': { effect: 'late' }, '1.0': [{ effect: 'first' }, { effect: 'second' }] },
                 particle_effects: { '1.0': { effect: 'puff', locator: 'hand' } },
-                timeline: { '0.5': ['pleasurehorizons:fade', 'swap_end'] },
+                timeline: { '0.5': ['mymod:fade', 'swap_end'] },
             },
         });
         const events = animation.clips[0].events;
 
         expect(events.map(e => [e.time, e.kind, e.payload])).toEqual([
-            [0.5, 'instruction', 'pleasurehorizons:fade\nswap_end'],
+            [0.5, 'instruction', 'mymod:fade\nswap_end'],
             [1, 'sound', 'first'],
             [1, 'sound', 'second'],
             [1, 'particle', ['puff', 'hand', ''].join(EVENT_FIELD_SEPARATOR)],

@@ -56,7 +56,7 @@ describe('bone colours', () => {
 describe('element names on import', () => {
     test('the numbers that end a bone name are left off', () => {
         expect(elementNameFor('armL')).toBe('armL');
-        expect(elementNameFor('boobL2')).toBe('boobL');
+        expect(elementNameFor('pouchL2')).toBe('pouchL');
         expect(elementNameFor('hair_12')).toBe('hair');
         expect(elementNameFor('hair.003')).toBe('hair');
         expect(elementNameFor('arm2L')).toBe('arm2L');

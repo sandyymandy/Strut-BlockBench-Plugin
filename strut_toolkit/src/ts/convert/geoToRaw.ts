@@ -11,7 +11,7 @@ import { Findings } from './report';
 /**
  * Turns a legacy Bedrock {@code .geo.json} (format 1.12.0 / 1.21.0: {@code "minecraft:geometry"}) into the raw model {@code encodeModel} writes
  * <p>
- * Pure: no Blockbench, no file access. Cubes and bones only, which is everything the Pleasure Horizons models use; meshes, locators, armatures and skinning
+ * Pure: no Blockbench, no file access. Cubes and bones only, which is everything a plain cube model uses; meshes, locators, armatures and skinning
  * are reported, not converted
  * <p>
  * <b>Conventions</b>, derived from reading both Java bakers ({@code BakedModelFactory.Builtin} for JSON, {@code BinaryModelBaker} for binary) rather than assumed. The JSON
@@ -227,7 +227,7 @@ function convertCube(cube: any, name: string, bone: any, strings: StringTable, f
     const boxUV = Array.isArray(cube?.uv);
 
     // The two bakers disagree here: the JSON one leaves a mirrored box-UV cube's top and bottom faces alone, the binary one swaps them for every mirrored
-    // cube (found by the oracle test). Pleasure Horizons has none; a per-face UV mirrored cube agrees in both
+    // cube (found by the oracle test). A model rarely has one; a per-face UV mirrored cube agrees in both
     if (boxUV && cube?.mirror === true)
         findings.add('lossy', 'a mirrored cube with a box UV: the binary format draws its top and bottom faces swapped; give it per-face UVs in Blockbench', where);
 

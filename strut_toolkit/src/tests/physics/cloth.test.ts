@@ -105,10 +105,10 @@ describe('cloth and flesh in the rig', () => {
         expect(topError).toBeLessThan(0.07);
     });
 
-    test('a jelly ball wobbles with a carried nipple that stays one rigid piece', () => {
-        const breast = ball('breast', 'skirt', 0, 0.6, 0.3, 0.12);
-        const nipple = ball('nipple', 'tip', 0, 0.6, 0.18, 0.03);
-        const rig = new PhysicsRig(BONES, { flesh: { skirt: { bone: 'skirt', preset: 'jelly', carry: ['tip'], collidesWith: [] } } }, noAuto, [breast, nipple]);
+    test('a jelly ball wobbles with a carried tip that stays one rigid piece', () => {
+        const pouch = ball('pouch', 'skirt', 0, 0.6, 0.3, 0.12);
+        const tip = ball('tip', 'tip', 0, 0.6, 0.18, 0.03);
+        const rig = new PhysicsRig(BONES, { flesh: { skirt: { bone: 'skirt', preset: 'jelly', carry: ['tip'], collidesWith: [] } } }, noAuto, [pouch, tip]);
 
         expect(rig.problems).toEqual([]);
 
@@ -119,21 +119,21 @@ describe('cloth and flesh in the rig', () => {
             const t = i / 60;
             const pos: V3 = [0, 0, motion(t)];
 
-            rig.clothAnimated = new Map([[breast.key, breast.rest.map(v => add(v, pos))], [nipple.key, nipple.rest.map(v => add(v, pos))]]);
+            rig.clothAnimated = new Map([[pouch.key, pouch.rest.map(v => add(v, pos))], [tip.key, tip.rest.map(v => add(v, pos))]]);
             rig.update(frames(), { pos, yaw: 0 }, qaxisY(0), t);
 
-            const moved = rig.clothVertices('nipple');
+            const moved = rig.clothVertices('tip');
 
             if (moved && i > 10) {
                 // a rigid piece: every distance between its vertices is what it was
                 for (const [a, b] of [[0, 5], [3, 40], [20, 60]]) {
-                    worstSpread = Math.max(worstSpread, Math.abs(length(sub(moved[a], moved[b])) - length(sub(nipple.rest[a], nipple.rest[b]))));
+                    worstSpread = Math.max(worstSpread, Math.abs(length(sub(moved[a], moved[b])) - length(sub(tip.rest[a], tip.rest[b]))));
                 }
             }
         }
 
         expect(worstSpread).toBeLessThan(0.005);
-        expect(rig.clothKeys().sort()).toEqual(['breast', 'nipple']);
+        expect(rig.clothKeys().sort()).toEqual(['pouch', 'tip']);
         expect(rig.clothReport()[0].flesh).toBe(true);
     });
 });

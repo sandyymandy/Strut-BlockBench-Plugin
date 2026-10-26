@@ -10,6 +10,12 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const PACKAGE_JSON_PATH = path.join(__dirname, '../package.json');
 const PLUGINS_MANIFEST_PATH = path.join(__dirname, '..', '..',  '..', '..', 'plugins.json');
 
+// the manifest lives in the Blockbench plugins repository; where there is none next to this one there is nothing to update
+if (!fs.existsSync(PLUGINS_MANIFEST_PATH)) {
+  console.log('No plugins.json at ' + PLUGINS_MANIFEST_PATH + ', manifest not updated');
+  process.exit(0);
+}
+
 const pluginsString = fs.readFileSync(PLUGINS_MANIFEST_PATH, { encoding: 'utf8' });
 const pluginsObj = JSON.parse(pluginsString);
 

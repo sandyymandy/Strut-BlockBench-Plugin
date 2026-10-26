@@ -6703,7 +6703,7 @@ createToken('GTE0PRE', '^\\s*>=\\s*0\.0\.0-0\\s*$')
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"name":"strut_toolkit","version":"4.6.1","private":true,"description":"Strut Toolkit","main":"index.js","scripts":{"prebuild":"npm run test","build":"npm run build:only","build:only":"webpack && npm run update_manifest","update_manifest":"node scripts/updateManifest.mjs","start":"webpack --watch --mode=development","lint":"eslint .","lint:fix":"eslint --fix .","tsc":"tsc --noEmit","pretest":"npm run lint && npm run tsc","test":"npm run test:only","test:only":"jest"},"author":"Eliot Lash, Tslat, Gecko, McHorse","license":"MIT","blockbenchConfig":{"title":"Strut Toolkit","author":"sandyymandy; based on work by Eliot Lash, Tslat, Gecko, McHorse","icon":"icon.png","description":"Blockbench tools for Strut: export and import .strutmodel and .strutanim, meshes and armatures, controller-based animation with easings, Molang and event markers, and the Strut Physics tab.","has_changelog":true,"min_version":"5.1.0","variant":"both","website":"https://github.com/sandyymandy/Strut-Claude","repository":"https://github.com/sandyymandy/Strut-Claude/tree/master/plugin/strut_toolkit","bug_tracker":"https://github.com/sandyymandy/Strut-Claude/issues"},"sideEffects":["./index.js"],"devDependencies":{"@types/jest":"^29.5.4","@types/lodash":"^4.14.197","@typescript-eslint/eslint-plugin":"^6.5.0","@typescript-eslint/parser":"^6.5.0","blockbench-types":"^5.1.0","css-loader":"^6.7.1","eol":"0.9.1","eslint":"^7.7.0","indent-string":"^5.0.0","jest":"^29.6.4","to-string-loader":"^1.2.0","ts-jest":"^29.1.1","ts-loader":"^9.4.4","tsx":"^4.23.15","typescript":"^5.9.3","webpack":"^5.88.2","webpack-cli":"^5.1.4"},"dependencies":{"lodash":"^4.17.21","semver":"7.3.2"}}');
+module.exports = /*#__PURE__*/JSON.parse('{"name":"strut_toolkit","version":"4.6.2","private":true,"description":"Strut Toolkit","main":"index.js","scripts":{"prebuild":"npm run test","build":"npm run build:only","build:only":"webpack && npm run update_manifest","update_manifest":"node scripts/updateManifest.mjs","start":"webpack --watch --mode=development","lint":"eslint .","lint:fix":"eslint --fix .","tsc":"tsc --noEmit","pretest":"npm run lint && npm run tsc","test":"npm run test:only","test:only":"jest"},"author":"Eliot Lash, Tslat, Gecko, McHorse","license":"MIT","blockbenchConfig":{"title":"Strut Toolkit","author":"sandyymandy; based on work by Eliot Lash, Tslat, Gecko, McHorse","icon":"icon.png","description":"Blockbench tools for Strut: export and import .strutmodel and .strutanim, meshes and armatures, controller-based animation with easings, Molang and event markers, and the Strut Physics tab.","has_changelog":true,"min_version":"5.1.0","variant":"both","website":"https://github.com/sandyymandy/Strut-Claude","repository":"https://github.com/sandyymandy/Strut-Claude/tree/master/plugin/strut_toolkit","bug_tracker":"https://github.com/sandyymandy/Strut-Claude/issues"},"sideEffects":["./index.js"],"devDependencies":{"@types/jest":"^29.5.4","@types/lodash":"^4.14.197","@typescript-eslint/eslint-plugin":"^6.5.0","@typescript-eslint/parser":"^6.5.0","blockbench-types":"^5.1.0","css-loader":"^6.7.1","eol":"0.9.1","eslint":"^7.7.0","indent-string":"^5.0.0","jest":"^29.6.4","to-string-loader":"^1.2.0","ts-jest":"^29.1.1","ts-loader":"^9.4.4","tsx":"^4.23.15","typescript":"^5.9.3","webpack":"^5.88.2","webpack-cli":"^5.1.4"},"dependencies":{"lodash":"^4.17.21","semver":"7.3.2"}}');
 
 /***/ }),
 
@@ -7355,8 +7355,8 @@ function buildWearerProfile(setId, groups) {
     return JSON.stringify(profile, null, 2) + '\n';
 }
 /**
- * The model name of a slot's file for a set: {@code mymod:girl} and {@code head} make {@code girl_head}, the file {@code strut/models/armour/girl_head.strutmodel} the
- * set lists as {@code mymod:armour/girl_head}
+ * The model name of a slot's file for a set: {@code mymod:creature} and {@code head} make {@code creature_head}, the file {@code strut/models/armour/creature_head.strutmodel} the
+ * set lists as {@code mymod:armour/creature_head}
  */
 function slotModelName(setId, slot) {
     const path = setId.includes(':') ? setId.substring(setId.indexOf(':') + 1) : setId;
@@ -7423,7 +7423,7 @@ function createArmourProperties() {
             condition: { formats: [_constants__WEBPACK_IMPORTED_MODULE_2__.STRUT_MODEL_ID] },
             exposed: false,
             values: [],
-        }), property => { property.description = 'The armour set this model wears, mymod:girl (a file assets/<ns>/strut/armour/sets/<path>.json)'; }),
+        }), property => { property.description = 'The armour set this model wears, mymod:creature (a file assets/<ns>/strut/armour/sets/<path>.json)'; }),
     ];
 }
 /** What the marks on the project's groups say */
@@ -7445,7 +7445,7 @@ function withArmourSet(then) {
         then(known);
         return;
     }
-    Blockbench.textPrompt('Armour set this model wears (mymod:girl)', 'mymod:girl', (text) => {
+    Blockbench.textPrompt('Armour set this model wears (mymod:creature)', 'mymod:creature', (text) => {
         Project[_armourProfile__WEBPACK_IMPORTED_MODULE_0__.PROPERTY_ARMOUR_SET] = text.trim();
         Project.saved = false;
         then(text.trim());
@@ -7490,7 +7490,7 @@ function exportSelectedSlot() {
         form: {
             info: { type: 'info', text: `Exports the ${names.length} selected bone${names.length === 1 ? '' : 's'} (${listed}) and what is on them. To export other bones, cancel, select them in the outliner and export again.` },
             slot: { label: 'Slot', type: 'select', options: SLOT_CHOICES, value: 'head', description: 'The equipment slot this piece is worn in' },
-            set: { label: 'Armour set', type: 'text', value: known !== '' ? known : 'mymod:girl', description: 'The armour set this model belongs to, namespace:name (a file assets/<namespace>/strut/armour/sets/<name>.json)' },
+            set: { label: 'Armour set', type: 'text', value: known !== '' ? known : 'mymod:creature', description: 'The armour set this model belongs to, namespace:name (a file assets/<namespace>/strut/armour/sets/<name>.json)' },
         },
         onConfirm(form) {
             var _a;
@@ -10871,7 +10871,7 @@ class Topology {
         this.adjOther = [];
         this.adjRest = [];
         this.restVolume = 0;
-        /** The connected pieces of the mesh (two breasts merged into one mesh are two): each one's particles, triangles and rest volume; volume is kept piece by piece */
+        /** The connected pieces of the mesh (two pouches merged into one mesh are two): each one's particles, triangles and rest volume; volume is kept piece by piece */
         this.pieceParticles = [];
         this.pieceTriangles = [];
         this.pieceVolume = [];
@@ -11280,7 +11280,7 @@ function inverseTranspose(m) {
 }
 /**
  * The rigid motion that best takes the points {@code from} to the points {@code to}: their two centres and the rotation (the polar factor of their spread,
- * found by averaging the matrix with its inverse transpose until it settles). What a carried mesh (a nipple on a breast) moves by, as one piece
+ * found by averaging the matrix with its inverse transpose until it settles). What a carried mesh (a tip on a pouch) moves by, as one piece
  */
 function rigidFit(from, to) {
     const m = from.length;
@@ -14740,10 +14740,10 @@ const TEMPLATE = `
     <div v-else>
       <div class="strut-phys-seg">
         <button :class="{ on: ui.kind === 'none' }" @click="kind('none')" title="This bone just follows the animation">None</button>
-        <button :class="{ on: ui.kind === 'spring' }" @click="kind('spring')" title="One bone that jiggles: breasts, cheeks, belly">Spring</button>
+        <button :class="{ on: ui.kind === 'spring' }" @click="kind('spring')" title="One bone that jiggles: pouches, jowls, belly">Spring</button>
         <button :class="{ on: ui.kind === 'chain' }" @click="kind('chain')" title="This bone and the bones under it swing like rope: hair, tails, ears">Chain</button>
         <button v-if="ui.hasMesh || ui.kind === 'cloth'" :class="{ on: ui.kind === 'cloth' }" @click="kind('cloth')" title="The vertices of this bone mesh hang and swing like cloth: a skirt, a cape">Cloth</button>
-        <button v-if="ui.hasMesh || ui.kind === 'flesh'" :class="{ on: ui.kind === 'flesh' }" @click="kind('flesh')" title="The vertices of this bone mesh are soft: pulled back to shape, bulging when pressed. Breasts, belly">Flesh</button>
+        <button v-if="ui.hasMesh || ui.kind === 'flesh'" :class="{ on: ui.kind === 'flesh' }" @click="kind('flesh')" title="The vertices of this bone mesh are soft: pulled back to shape, bulging when pressed. Pouches, belly">Flesh</button>
       </div>
       <div v-if="ui.kind === 'spring' || ui.kind === 'chain'">
         <div class="strut-phys-chips"><button class="strut-phys-chip" v-for="l in looksFor" :key="l.id" @click="look(l.id)">{{ l.label }}</button></div>
@@ -14815,7 +14815,7 @@ const TEMPLATE = `
         </div>
         <div class="strut-phys-sub" @click="tog('carry')">{{ ui.sections.carry ? '▾' : '▸' }} Meshes that ride on it</div>
         <div v-if="ui.sections.carry">
-          <div class="strut-phys-hint">Other bones whose meshes move with this one as a rigid piece: a nipple on a breast. They are drawn with it in the preview and in the game.</div>
+          <div class="strut-phys-hint">Other bones whose meshes move with this one as a rigid piece: a tip on a pouch. They are drawn with it in the preview and in the game.</div>
           <div class="strut-phys-bonelist">
             <label v-for="b in ui.meshBones" :key="b"><input type="checkbox" :checked="ui.soft.carry.includes(b)" @change="carryOn(b, $event)"> {{ b }}</label>
           </div>

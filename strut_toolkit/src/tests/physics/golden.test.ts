@@ -4,8 +4,8 @@ import { ChainState, chainStep, Placed, springStep, SpringState, STEP, V3 } from
 import { chainResponse, resolveChain, resolveSpring, respond, springResponse } from '../../ts/physics/preview';
 import { ClothParams, clothStep, ClothState, Topology } from '../../ts/physics/cloth';
 
-// The Java record: physics/src/test/resources/golden/solvers.json, written by GoldenSolverTest from the Java SpringSolver and ChainSolver
-const golden = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../../../src/test/resources/golden/solvers.json'), 'utf8'));
+// The Java record (tests/fixtures/solvers.json, copied from the engine's src/test/resources/golden/solvers.json), written by its GoldenSolverTest from the Java SpringSolver and ChainSolver
+const golden = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../fixtures/solvers.json'), 'utf8'));
 
 describe('the TypeScript solvers agree with the Java ones', () => {
     test('a spring bone thrown about for five seconds follows the Java rotation, velocity and translation step by step', () => {
@@ -141,9 +141,9 @@ describe('config entries resolve like the games do', () => {
     });
 
     test('a whole document answers with one trace per bone and chain', () => {
-        const traces = respond({ bones: { boobL: { preset: 'jiggle-soft' } }, chains: { hair: { preset: 'hair', bones: ['h1', 'h2'] } } });
+        const traces = respond({ bones: { pouchL: { preset: 'jiggle-soft' } }, chains: { hair: { preset: 'hair', bones: ['h1', 'h2'] } } });
 
-        expect(traces.map(t => [t.kind, t.name])).toEqual([['bone', 'boobL'], ['chain', 'hair']]);
+        expect(traces.map(t => [t.kind, t.name])).toEqual([['bone', 'pouchL'], ['chain', 'hair']]);
         expect(traces.every(t => t.trace.peak > 0)).toBe(true);
     });
 });

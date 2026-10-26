@@ -1,6 +1,6 @@
 {
   "name": "strut_toolkit",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "private": true,
   "description": "Strut Toolkit",
   "main": "index.js",

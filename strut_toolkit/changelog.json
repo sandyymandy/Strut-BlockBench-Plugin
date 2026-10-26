@@ -272,5 +272,18 @@
         ]
       }
     ]
+  },
+  "4.6.2": {
+    "title": "4.6.2",
+    "author": "sandyymandy",
+    "categories": [
+      {
+        "title": "Changes",
+        "list": [
+          "Removed the batch converter for old Bedrock asset folders and its event-file mapping, which nothing in the plugin used. Opening a single older .geo.json or animation still works",
+          "The tooltips and examples in the Physics and Armour tabs use plain examples (a pouch, a belly, a creature)"
+        ]
+      }
+    ]
   }
 }

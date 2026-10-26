@@ -112,10 +112,10 @@ describe('convertGeoFile', () => {
     });
 
     it('the texture, model id and fingerprint come from the description and the bone order', () => {
-        const { model } = geo([{ name: 'a' }, { name: 'b', parent: 'a' }], { identifier: 'geometry.lucy', texture_width: 64, texture_height: 48 });
+        const { model } = geo([{ name: 'a' }, { name: 'b', parent: 'a' }], { identifier: 'geometry.ava', texture_width: 64, texture_height: 48 });
 
-        expect(model.modelId).toBe('geometry.lucy');
-        expect(model.textures[0]).toEqual({ name: 'lucy', width: 64, height: 48, uvWidth: 64, uvHeight: 48 });
+        expect(model.modelId).toBe('geometry.ava');
+        expect(model.textures[0]).toEqual({ name: 'ava', width: 64, height: 48, uvWidth: 64, uvHeight: 48 });
         expect(skeletonFingerprintOf(model)).toBe(skeletonFingerprintOf(geo([{ name: 'a' }, { name: 'b', parent: 'a' }]).model));
         expect(skeletonFingerprintOf(model)).not.toBe(skeletonFingerprintOf(geo([{ name: 'b' }, { name: 'a', parent: 'b' }]).model));
     });
