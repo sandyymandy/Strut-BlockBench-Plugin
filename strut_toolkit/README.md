@@ -2,6 +2,8 @@
 
 This readme is for developers working on the Strut Blockbench plugin.
 
+Some of the code in this project was written with the help of AI tools. The design and direction are mine, and the build runs its tests, but it is an early project, so expect rough edges and please report anything you run into.
+
 # Environment setup
 ## Windows
 Inspect the contents of [.nvmrc](./src/.nvmrc) - this specifies the recommended version of Node.JS to use for plugin development. You can [download the corresponding version of Node.JS here](https://nodejs.org/en/download/releases).
