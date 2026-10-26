@@ -19,7 +19,7 @@ Must be paired with a Minecraft: Java mod that uses the Strut library.
 <div style="text-align:center;"><h2>Links:</h2></div>
 <div style="text-align:center; display:flex">
 <div style="flex:1">
-<a href="https://github.com/sandyymandy/Strut">
+<a href="https://github.com/sandyymandy/Strut-BlockBench-Plugin">
 <p style="font-size:1.25em; color:#AAAAAA">Repository</p>
 </a>
 </div>
@@ -29,7 +29,7 @@ Must be paired with a Minecraft: Java mod that uses the Strut library.
 </a>
 </div>
 <div style="flex:1">
-<a href="https://github.com/sandyymandy/Strut/issues">
+<a href="https://github.com/sandyymandy/Strut-BlockBench-Plugin/issues">
 <p style="font-size:1.25em; color:#AAAAAA">Issues</p>
 </a>
 </div>
